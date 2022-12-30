@@ -11,6 +11,6 @@ jobs:
       - name: list docker image
         run: docker image ls
       - name: dockerhub login
-        run: docker login -u ${{ secrets.DOCKERHUB.USERNAME }} -p ${{ secrets.DOCKERHUB.PASSWORD }}
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: push to dockerhub
         run: docker image push shenggao/flask-demo:latest
