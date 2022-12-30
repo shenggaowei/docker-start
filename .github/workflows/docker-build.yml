@@ -23,4 +23,4 @@ jobs:
       - name: build and push
         run: /
           docker buildx ls
-          docker buildx build --push --platform linux/arm/v7,linux/arm/v8,linux/arm64 -t shenggao/flask-demo:latest .
+          docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t shenggao/flask-demo:latest .
