@@ -40,5 +40,4 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             docker image pull shenggao/flask-demo:latest
-            docker container stop flask-demo
             docker container run -d -p 5000:5000 --name flask-demo shenggao/flask-demo:latest
