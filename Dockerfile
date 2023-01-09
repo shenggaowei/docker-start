@@ -1,6 +1,7 @@
 FROM python:3.9.5-slim
 
-RUN groupadd -r flask && useradd -r -g flask flask && \
+RUN pip install flask \
+    groupadd -r flask && useradd -r -g flask flask && \
     mkdir /src && \
     chown -R flask:flask /src
 
