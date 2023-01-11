@@ -38,7 +38,14 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-        shell: bash
-        run: |
-          chmod +x ./deploy.sh
-          ./deploy.sh
+          script: |
+            if [[ -n $(docker ps -q -f "name=^flask-demo$") ]]; then
+               echo "好"
+               docker container stop flask-demo
+               docker image pull shenggao/flask-demo:latest
+               docker container run -d --rm -p 5000:5000 --name flask-demo shenggao/flask-demo:latest
+             else
+               echo "不好"
+               docker image pull shenggao/flask-demo:latest
+               docker container run -d --rm -p 5000:5000 --name flask-demo shenggao/flask-demo:latest
+             fi
